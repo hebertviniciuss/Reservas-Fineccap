@@ -1,0 +1,35 @@
+{% extends 'reservas/base.html' %}
+
+{% block center %}
+  <h2> Lista de Reservas</h2>
+
+  <a href="{% url 'criar_reserva' %}" class="btn btn-success mb-3">Novo Cadastro</a>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>CNPJ</th>
+        <th>Nome da empresa</th>
+        <th>Categoria</th>
+        <th>Quitado</th>
+        <th>Localização</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for reserva in reservas %}  
+      <tr>
+        <td>{{ reserva.cnpj }}</td>
+        <td>{{ reserva.nome_empresa }}</td>
+        <td>{{ reserva.categoria }}</td>
+        <td>{{ reserva.quitado }}</td>
+        <td>{{ reserva.stand.localizacao }}</td>
+        <td>
+          <a href="{% url 'reserva_editar' id=reserva.id %}" class="btn btn-primary btn-sm">Editar</a>
+          <a href="{% url 'reserva_remover' id=reserva.id %}" class="btn btn-danger btn-sm">Remover</a>
+        </td>
+      </tr>
+      {% endfor %}
+    
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'reservas/base.html' %}
+
+{% block center %}
+    <h2> Criação de Reserva.</h2>
+       
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="cnpj" class="form-label">CNPJ</label>
+            {{ form.cnpj }}
+        </div>
+        
+        <div class="mb-3">
+            <label for="nome_empresa" class="form-label">Nome da empresa</label>
+            {{ form.nome_empresa }}
+        </div>
+
+        <div class="mb-3">
+            <label for="categoria_empresa" class="form-label">Categoria</label>
+            {{ form.categoria }}
+        </div>
+
+        <div class="mb-3">
+            <label for="stand" class="form-label">Stand</label>
+            {{ form.stand }}
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>    
+{% endblock %}

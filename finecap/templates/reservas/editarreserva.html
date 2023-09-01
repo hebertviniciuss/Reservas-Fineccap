@@ -1,0 +1,12 @@
+{% extends 'reservas/base.html' %}
+
+{% block title %}Editar Reserva{% endblock title %}
+
+{% block content %}
+  <h1>Editar Reserva</h1>
+  <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_div }}
+      <button type="submit">Enviar</button>
+  </form>
+{% endblock content %}

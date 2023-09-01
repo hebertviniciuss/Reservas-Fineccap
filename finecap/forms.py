@@ -1,8 +1,9 @@
+from django.forms import ModelForm
 from django import forms
 from .models import Stand, Reserva
 
 
-class StandForm(forms.ModelForm):
+class StandForm(ModelForm):
    
     class Meta:
         model = Stand
@@ -13,7 +14,7 @@ class StandForm(forms.ModelForm):
         }
 
 
-class ReservaForm(forms.ModelForm):
+class ReservaForm(ModelForm):
    
     class Meta:
         model = Reserva
@@ -23,5 +24,4 @@ class ReservaForm(forms.ModelForm):
         'cnpj': forms.TextInput(attrs={'class': 'form-control'}),
         'categoria': forms.TextInput(attrs={'class': 'form-control'}),
         'stand': forms.Select(attrs={'class': 'form-control'}),
-        'quitado': forms.RadioSelect(attrs={'class': 'form-control'}),
         }

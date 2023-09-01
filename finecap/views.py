@@ -6,12 +6,12 @@ def reserva_editar(request,id):
     reserva = get_object_or_404(Reserva,id=id)
    
     if request.method == 'POST':
-        form = ReservaForm(request.POST, request.FILES,instance=reserva)
+        form = ReservaForm(request.POST, request.FILES,instance=Reserva)
         if form.is_valid():
             form.save()
             return redirect('reservas_listar')
     else:
-        form = ReservaForm(instance=Produto)
+        form = ReservaForm(instance=Reserva)
 
     return render(request,'reservas/editarreserva.html',{'form':form})
 
@@ -40,8 +40,8 @@ def criar_reserva(request):
     return render(request,"reservas/criarreserva.html", {'form':form})
 
 def index(request):
-    reserva = Reserva.objects.all()
+    reservas = Reserva.objects.all()
     context ={
-        'reserva':reserva
+        'reservas':reservas
     }
     return render(request, "reservas/index.html",context)

@@ -12,7 +12,6 @@
         <th>Nome da empresa</th>
         <th>Categoria</th>
         <th>Quitado</th>
-        <th>Localização</th>
       </tr>
     </thead>
     <tbody>
@@ -22,7 +21,6 @@
         <td>{{ reserva.nome_empresa }}</td>
         <td>{{ reserva.categoria }}</td>
         <td>{{ reserva.quitado }}</td>
-        <td>{{ reserva.stand.localizacao }}</td>
         <td>
           <a href="{% url 'reserva_editar' id=reserva.id %}" class="btn btn-primary btn-sm">Editar</a>
           <a href="{% url 'reserva_remover' id=reserva.id %}" class="btn btn-danger btn-sm">Remover</a>

@@ -1,0 +1,18 @@
+{% extends 'reservas/base.html' %}
+
+{% block title %}Página inicial{% endblock %}
+
+{% block center %}
+
+{% block content %}
+<div class="card mb-3">
+    <h1 class="text-center" class="display-4">Detalhe da Reserva</h1>
+    <div class="card-body">
+        <h2 class="card-title">Nome da Empresa: {{reserva.nome_empresa}}</h2>
+        <p class="card-text">Categoria: {{reserva.categoria}}</p>
+        <p class="card-text"><small class="text-sucess">CNPJ: {{reserva.cnpj}}</small></p>
+        <p class="card-text"><small class="text-danger">STAND: {{reserva.stand}}</small></p>
+    </div>
+</div>
+{% endblock content %}
+{% endblock %}

@@ -11,7 +11,9 @@
         <th>Nome da empresa</th>
         <th>CNPJ</th>
         <th>Categoria</th>
+        <th>Stand</th>
         <th>Quitado</th>
+        <th>Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -20,10 +22,12 @@
         <td>{{ reserva.nome_empresa }}</td>
         <td>{{ reserva.cnpj }}</td>
         <td>{{ reserva.categoria }}</td>
+        <td>{{ reserva.stand }}</td>
         <td>{{ reserva.quitado }}</td>
         <td>
           <a href="{% url 'reserva_editar' id=reserva.id %}" class="btn btn-primary btn-sm">Editar</a>
           <a href="{% url 'reserva_remover' id=reserva.id %}" class="btn btn-danger btn-sm">Remover</a>
+          <a href="{% url 'reserva_detalhar' id=reserva.id %}" class="btn btn-secundary btn-sm">Detalhar</a>
         </td>
       </tr>
       {% endfor %}

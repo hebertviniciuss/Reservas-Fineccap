@@ -17,13 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
-from finecap.views import criar_reserva, reserva_editar, reserva_remover, reserva_detalhar, index
+from finecap.views import reserva_criar, reserva_editar, reserva_remover, reserva_detalhar, reserva_listar, index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='index'),
-    path('criar_reserva', criar_reserva, name='criar_reserva'),
+    path('index/', index, name='index'),
+    path('reserva_criar/', reserva_criar, name='criar_reserva'),
     path('reserva_remover/<int:id>/', reserva_remover, name='reserva_remover'),
+    path('reserva_listar/', reserva_listar, name='reserva_listar'),
     path('reserva_editar/<int:id>/', reserva_editar, name='reserva_editar'),
     path('reserva_detalhar/<int:id>/', reserva_detalhar, name='reserva_detalhar'),
 ]

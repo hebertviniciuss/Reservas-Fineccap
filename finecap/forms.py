@@ -1,18 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Stand, Reserva
-
-
-class StandForm(ModelForm):
-   
-    class Meta:
-        model = Stand
-        fields = '__all__'
-        widgets = {
-        'localizacao': forms.TextInput(attrs={'class': 'form-control'}),
-        'valor': forms.NumberInput(attrs={'class': 'form-control'})
-        }
-
+from .models import Reserva
 
 class ReservaForm(ModelForm):
    

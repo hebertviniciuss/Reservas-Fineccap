@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils import timezone
 # Create your models here.
 class Stand(models.Model):
     localizacao = models.CharField(max_length=200)
@@ -12,8 +12,12 @@ class Reserva(models.Model):
     nome_empresa = models.CharField(max_length=150)
     cnpj = models.CharField(max_length=150)
     categoria = models.CharField(max_length=150)
+    data_reserva = models.DateTimeField(default=timezone.now)
     stand = models.OneToOneField(Stand, on_delete=models.CASCADE)
     quitado = models.BooleanField(default=False)
     
     def __str__(self):
         return self.nome_empresa
+
+    class Meta:
+        ordering = ['data_reserva',]

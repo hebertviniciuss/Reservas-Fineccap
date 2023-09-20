@@ -12,6 +12,7 @@
         <th>CNPJ</th>
         <th>Categoria</th>
         <th>Stand</th>
+        <th>Data da Reserva</th>
         <th>Quitado</th>
         <th>Ações</th>
       </tr>
@@ -23,6 +24,7 @@
         <td>{{ reserva.cnpj }}</td>
         <td>{{ reserva.categoria }}</td>
         <td>{{ reserva.stand }}</td>
+        <td>{{ reserva.data_reserva }}</td>
         <td>{{ reserva.quitado }}</td>
         <td>
           <a href="{% url 'reserva_editar' id=reserva.id %}" class="btn btn-primary btn-sm">Editar</a>

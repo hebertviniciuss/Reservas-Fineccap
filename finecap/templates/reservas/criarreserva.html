@@ -3,7 +3,7 @@
 {% block center %}
     <h2> Criação de Reserva.</h2>
        
-    <form method="post">
+    <form method="post" action="{% url 'criar_reserva'%}">
         {% csrf_token %}
         <div class="mb-3">
             <label for="cnpj" class="form-label">CNPJ</label>

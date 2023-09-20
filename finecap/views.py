@@ -9,6 +9,9 @@ def reserva_criar(request):
         if form.is_valid():
             form.save()
             form = ReservaForm()
+        else:
+            print(form.errors)
+            form = ReservaForm(request.POST)
     else:
         form = ReservaForm()
 

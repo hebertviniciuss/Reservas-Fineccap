@@ -12,7 +12,7 @@ class Reserva(models.Model):
     nome_empresa = models.CharField(max_length=150)
     cnpj = models.CharField(max_length=150)
     categoria = models.CharField(max_length=150)
-    data_reserva = models.DateTimeField(default=timezone.now)
+    data_reserva = models.DateTimeField(default=timezone.now, blank=True, null=True)
     stand = models.OneToOneField(Stand, on_delete=models.CASCADE)
     quitado = models.BooleanField(default=False)
     

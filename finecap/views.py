@@ -1,5 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from .models import Reserva
+from django.db.models.query import QuerySet
 from .forms import ReservaForm
 
 # Create your views here.
@@ -32,6 +33,17 @@ def reserva_editar(request,id):
 
 def reserva_listar(request):
     reservas = Reserva.objects.all()
+    if(request.GET.get('search-name')):
+        reservas = reservas.filter(nome_empresa__icontains=request.GET.get('search-name'))
+    if(request.GET.get('search-payed-true')):
+        reservas = reservas.filter(quitado=True)
+    if(request.GET.get('search-payed-false')):
+        reservas = reservas.filter(quitado=False)
+    if(request.GET.get('search-value')):
+        reservas = reservas.filter(stand__valor=request.GET.get('search-value'))
+    if(request.GET.get('search-date')):
+        reservas = reservas.filter(data_reserva__date=request.GET.get('search-date'))    
+        
     context ={
         'reservas':reservas
     }

@@ -4,7 +4,20 @@
   <h2> Lista de Reservas</h2>
 
   <a href="{% url 'criar_reserva' %}" class="btn btn-success mb-3">Nova Reserva</a>
+  <h5 class="text-secondary">Filtrar</h5>
+  <form action="{% url 'index' %}" method="get">
+    <div class="input-group">
+      <input placeholder="Nome Empresa" type="text" name="search-name" class="form-control" value="">
+      <label for="search-payed-true" class="text-secondary" style="margin-top: 5px; margin-left: 10px;">Quitado</label>
+      <input id="search-payed-true" placeholder="Quitado" type="radio" name="search-payed" class="form-check-input mx-3" value="True" style="margin-bottom: 10px; position: relative;">
+      <label for="search-payed-true" class="text-secondary" style="margin-top: 5px; margin-left: 10px;">Não quitado</label>
+      <input id="search-payed-false" placeholder="Quitado" type="radio" name="search-payed" class="form-check-input mx-3" value="False" style="margin-bottom: 7px; position: relative;">
+      <input placeholder="Valor" type="text" name="search-value" class="form-control me-3" value="">
+      <input placeholder="Data" type="date" name="search-date" class="form-control" value="">
+      <button type="submit" class="btn btn-primary ms-3">Enviar</button>
+    </div>
 
+  </form>
   <table class="table table-bordered">
     <thead>
       <tr>

@@ -2,6 +2,7 @@ from django.shortcuts import render,get_object_or_404,redirect
 from .models import Reserva
 from django.db.models.query import QuerySet
 from .forms import ReservaForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 def reserva_criar(request):
@@ -43,6 +44,15 @@ def reserva_listar(request):
         reservas = reservas.filter(stand__valor=request.GET.get('search-value'))
     if(request.GET.get('search-date')):
         reservas = reservas.filter(data_reserva__date=request.GET.get('search-date'))    
+       
+    paginator = Paginator(reservas, 5)
+    page = request.GET.get('page')
+    try:
+        reservas = paginator.page(page)
+    except PageNotAnInteger:
+        reservas = paginator.page(1)
+    except EmptyPage:
+        reservas = paginator.page(paginator.num_pages)
         
     context ={
         'reservas':reservas

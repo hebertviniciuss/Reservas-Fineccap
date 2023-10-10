@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
 from finecap.views import reserva_criar, reserva_editar, reserva_remover, reserva_detalhar, reserva_listar, index
+from user.views import user_login, user_logout, register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +28,7 @@ urlpatterns = [
     path('reserva_listar/', reserva_listar, name='reserva_listar'),
     path('reserva_editar/<int:id>/', reserva_editar, name='reserva_editar'),
     path('reserva_detalhar/<int:id>/', reserva_detalhar, name='reserva_detalhar'),
+    path('login/', user_login, name='login'),
+    path('logout/', user_logout, name='logout'),
+    path('register/', register, name='register'),
 ]

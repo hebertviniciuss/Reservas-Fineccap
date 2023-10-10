@@ -3,8 +3,9 @@ from .models import Reserva
 from django.db.models.query import QuerySet
 from .forms import ReservaForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+@login_required(login_url='/login/')
 def reserva_criar(request):
     if request.method == 'POST':
         form = ReservaForm(request.POST)
@@ -19,6 +20,7 @@ def reserva_criar(request):
 
     return render(request, 'reservas/criarreserva.html', {'form': form})
 
+@login_required(login_url='/login/')
 def reserva_editar(request,id):
     reserva = get_object_or_404(Reserva,id=id)
    
@@ -31,6 +33,7 @@ def reserva_editar(request,id):
         form = ReservaForm(instance=reserva)
 
     return render(request,'reservas/editarreserva.html',{'form':form})
+
 
 def reserva_listar(request):
     reservas = Reserva.objects.all()
@@ -63,6 +66,7 @@ def reserva_detalhar(request,id):
     reserva = Reserva.objects.get(id=id)
     return render(request,'reservas/detalhe.html', {'reserva': reserva})
 
+@login_required(login_url='/login/')
 def reserva_remover(request, id):
     reserva = get_object_or_404(Reserva, id=id)
     reserva.delete()
